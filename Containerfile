@@ -3,7 +3,7 @@ ARG HTTP_PORT=8080
 ENV APP_PORT=8080
 RUN dnf install -y httpd && \
     dnf clean all && \
-    sed -i -e "/s/Listen 80/Listen 8080/g" /etc/httpd/conf/httpd.conf && \
+    sed -i -e "s/Listen 80/Listen 8080/g" /etc/httpd/conf/httpd.conf && \
     chgrp -R 0 /var/run/httpd /var/log/httpd && \
     chmod -R g=u /var/run/httpd /var/log/httpd
 WORKDIR /var/www/html
