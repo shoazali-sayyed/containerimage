@@ -7,10 +7,10 @@ RUN dnf install -y httpd && \
     chgrp -R 0 /var/run/httpd /var/log/httpd && \
     chmod -R g=u /var/run/httpd /var/log/httpd
 WORKDIR /var/www/html
-COPY src/index.html /var/www/html
+COPY /src/index.html /var/www/html
 LABEL description="My httpd container application" \
       io.k8s.description="My httpd container application" \ 
-      io.openshift.expose-services="80:http" \
+      io.openshift.expose-services="8080:http" \
       io.openshift.tags="httpd, web server, apache, apache2" 
 EXPOSE ${APP_PORT}
 USER 1001
